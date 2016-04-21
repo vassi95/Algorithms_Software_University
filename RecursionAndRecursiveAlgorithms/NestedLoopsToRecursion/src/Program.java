@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Program {
+
+	public static void generateCombinations(int[] array, int index, int n) {
+
+		if (index >= array.length) {
+			for (int i : array) {
+				System.out.print(i);
+			}
+		}
+
+		else {
+			for (int i = 1; i <= n; i++) {
+				array[index] = i;
+				generateCombinations(array, index + 1, n);
+				System.out.println();
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("n= ");
+		int n = input.nextInt();
+		int[] array = new int[n];
+		generateCombinations(array, 0, n);
+
+	}
+
+}

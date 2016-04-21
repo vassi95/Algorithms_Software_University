@@ -1,0 +1,16 @@
+
+public class Reverse {
+	
+	public static int[] reverseArray(int[] a,int i){
+		int j =a.length-1;
+		if(i<j){
+			int num=a[i];
+			a[i]=a[j];
+			a[j]=num;
+			j--;
+			reverseArray(a, i+1);
+		}
+		return a;
+	}
+	
+}

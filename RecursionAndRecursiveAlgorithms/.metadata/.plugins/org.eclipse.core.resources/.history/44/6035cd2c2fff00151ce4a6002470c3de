@@ -1,0 +1,10 @@
+
+public class Reverse {
+	
+	  public static void recursivePrint(int[] array, int index) {
+	        if (index != array.length) {
+	            recursivePrint(array, index + 1);
+	            System.out.println( array[index] );
+	        }
+	    }
+}

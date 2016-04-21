@@ -1,0 +1,6 @@
+INDEX VERSION 1.127+C:\Users\Vasi\Desktop\JAVA\NEW\SoftUni_Algorithms\SortingAndSearchingAlgorithms\.metadata\.plugins\org.eclipse.jdt.core
+418562274.index
+1046407350.index
+3196754493.index
+2426632008.index
+3148980966.index

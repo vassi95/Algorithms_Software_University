@@ -1,0 +1,66 @@
+import java.util.Collections;
+import java.util.Stack;
+
+public class TowerOfHanoi {
+static int stepsTaken = 0;
+private static Stack<Integer> source;
+private static Stack<Integer> destination = new Stack<Integer>();
+private static Stack<Integer> spare = new Stack<Integer>();
+	private static void MoveDisks(int bottomDisk, Stack<Integer> source, Stack<Integer> destination, Stack<Integer> spare){
+		if(bottomDisk == 1){
+			stepsTaken++;
+			destination.push(source.pop());
+			System.out.println("Step#: "+ stepsTaken + " Moved disk: "+ bottomDisk);
+			PrintRods();
+		}
+		else{
+			System.out.println("Step#: "+ stepsTaken + " Moved disk: "+ bottomDisk);
+			MoveDisks(bottomDisk - 1, source, spare, destination);
+		     
+			destination.push(source.pop());
+			 
+		      MoveDisks(bottomDisk - 1, spare, source, destination);
+		}
+	}
+	
+	private static void PrintRods() {
+		
+		System.out.print(" Source ");
+		printStack(reverse(source));
+		System.out.println();
+		System.out.print("Destination ");
+		printStack(reverse(destination));
+		System.out.println();
+		System.out.print("Spare ");
+		printStack(reverse(spare));
+		System.out.println();
+		System.out.println();
+		
+	}
+
+	public static void main(String[] args) {
+		int numberOfDisks = 3;
+		source = new Stack<Integer>();
+		source.push(3);
+		source.push(2);
+		source.push(1);
+		MoveDisks(numberOfDisks, source, destination,spare);
+
+	}
+
+	public static Stack<Integer> reverse(Stack<Integer> stack){
+		Stack<Integer> newStack = new Stack<Integer>();
+		for(int i: stack){
+			newStack.push(i);
+		}
+		return newStack;		
+	}
+	
+	public static void printStack(Stack<Integer> st){
+		for(int i: st){
+			
+			System.out.print(i+ ",");
+		}
+		
+	}
+}

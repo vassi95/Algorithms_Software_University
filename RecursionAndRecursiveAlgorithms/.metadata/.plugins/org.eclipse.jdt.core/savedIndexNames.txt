@@ -1,0 +1,8 @@
+INDEX VERSION 1.127+C:\Users\Vasi\Desktop\JAVA\NEW\SoftUni_Algorithms\RecursionAndRecursiveAlgorithms\.metadata\.plugins\org.eclipse.jdt.core
+2679383525.index
+4294817470.index
+1292366793.index
+2254958385.index
+3090549331.index
+3208688715.index
+3474198411.index

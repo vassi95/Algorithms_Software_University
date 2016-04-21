@@ -1,0 +1,56 @@
+
+public class Heap_sort {
+	  public static void main(String[ ] args)
+	   {
+	      int i;                      
+
+	      int[ ] data = { 80, 10, 50, 70, 60, 90, 20, 30, 40, 0 };
+
+	      System.out.println("Here is the entire original array:");
+	      for (i = 0; i < data.length; i++)
+	         System.out.print(data[i] + "  ");
+	      System.out.println( );
+
+	      heapsort(data, data.length);
+	      System.out.println("After sorting, the numbers are:");
+	      for (i = 0; i < data.length; i++)
+	         System.out.print(data[i] + "  ");
+	      System.out.println( );
+	   }
+	   
+	
+	   public static void heapsort(int[ ] data, int n)
+	   {
+	      int unsorted; 
+	      int temp;    
+
+	      makeHeap(data, n);
+
+	      unsorted = n;
+
+	      while (unsorted > 1)
+	      {
+	         unsorted--;
+	         temp = data[0];
+	         data[0] = data[unsorted];
+	         data[unsorted] = temp;
+
+	         reheapifyDown(data, unsorted);
+	      }
+	   }
+	   
+	   private static void makeHeap(int[ ] data, int n)
+	   {      
+	      System.err.println("The student needs to implement the makeHeap and");
+	      System.err.println("reheapifyDown methods before the heapsort can be used.");
+	      System.exit(0);
+	   }
+
+	   private static void reheapifyDown(int[ ] data, int n)
+	   {
+	      System.err.println("The student needs to implement the makeHeap and");
+	      System.err.println("reheapifyDown methods before the heapsort can be used.");
+	      System.exit(0);
+	   }
+	}
+

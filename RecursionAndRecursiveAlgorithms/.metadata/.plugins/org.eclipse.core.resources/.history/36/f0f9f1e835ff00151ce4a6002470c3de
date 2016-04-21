@@ -1,0 +1,23 @@
+
+public class Program {
+
+	public static void generateCombinations(int[] array, int index, int n){
+		if(index >= array.length){
+			for(int i:array){
+			System.out.println(i);
+			}
+		}
+		else{
+			for(int i=1; i<=n; i++){
+				array[index] =i;
+				generateCombinations(array, index+1,n);
+			}
+		}
+	}
+	public static void main(String[] args) {
+		int[] array = {1, 2, 3, 4, 5, 6};
+		generateCombinations(array, 0,2);
+
+	}
+
+}

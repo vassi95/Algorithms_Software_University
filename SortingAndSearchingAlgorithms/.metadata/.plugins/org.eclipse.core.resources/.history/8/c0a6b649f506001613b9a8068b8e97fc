@@ -1,0 +1,6 @@
+import java.util.Random;
+
+public class Fisher_YatesShuffleAlgorithm {
+	
+
+}

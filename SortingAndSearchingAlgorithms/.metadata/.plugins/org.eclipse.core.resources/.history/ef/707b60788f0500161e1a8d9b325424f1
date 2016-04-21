@@ -1,0 +1,33 @@
+
+import java.util.List;
+
+public class Insertion_Sort {
+
+	public static void sort(int[] arr){
+		for(int i=1; i<arr.length; i++){
+			while(i>0 && arr[i-1]> arr[i]){
+				int temp =arr[i];
+				arr[i] =  arr[i-1];
+				arr[i-1] = temp;
+				i--;
+			}
+		}
+		
+	}
+	
+	private static void printNumbers(int[] arr) {
+        
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+        System.out.println("\n");
+    }
+
+	public static void main(String[] args) {
+		int[] input = { 4, 2, 9, 6, 23, 12, 34, 0, 1 };
+		sort(input);
+		printNumbers(input);
+
+	}
+
+}

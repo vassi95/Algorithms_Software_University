@@ -1,0 +1,11 @@
+
+public class Reverse {
+	
+	public void ReverseArray(int[] arr, int index){
+		
+		if(index!= arr.length){
+			ReverseArray(arr, index +1 );
+		}
+		System.out.println( arr[index] );
+	}
+}

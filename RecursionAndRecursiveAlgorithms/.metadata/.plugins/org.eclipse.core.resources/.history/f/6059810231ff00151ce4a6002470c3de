@@ -1,0 +1,17 @@
+
+public class Reverse {
+	
+	public static int[] reverseArray(int[] a,int i,int j){
+		if(i<j){
+			swap(a[i], a[j]);
+			reverseArray(a, i+1, j-1);
+		}
+		return a;
+	}
+	
+	public static void swap(int a, int b){
+		int temp = a;
+		a=b;
+		b=temp;
+	}
+}

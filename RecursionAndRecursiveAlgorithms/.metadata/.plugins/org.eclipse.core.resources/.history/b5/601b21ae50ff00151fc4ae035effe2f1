@@ -1,0 +1,55 @@
+import java.util.List;
+
+public class FindPaths {
+static char[][] m = new char[][]{
+	  { 's', ' ', ' ', ' ' },
+	  { ' ', '*', '*', ' ' },
+	  { ' ', '*', '*', ' ' },
+	  { ' ', '*', 'e', ' ' },
+	  { ' ', ' ', ' ', ' ' }
+	};
+	
+
+	
+	public static void main(String[] args) {
+		FindPathToExit(0,0,'s');
+
+	}
+
+	static boolean InRange(int row, int col){
+		boolean rowInRange = row >= 0 && row < m.length;
+		boolean colInRange = col >= 0 && col < m.length;
+		return rowInRange && colInRange;
+	}
+	
+	private static void PrintSolution(){
+		System.out.println("sdfsdf");
+		for(int row = 0; row< m.length; row++){
+			for(int col=0; col< m.length; col++){
+				System.out.println(m[row][col]);
+			}
+			System.out.println();
+		}
+	}
+	public static List<Character> steps;
+	public static void FindPathToExit(int row, int col, char dir){
+		if(! InRange(row,col)){
+			return;
+		}
+		if(m[row][col]== 'e'){
+			PrintSolution();
+			return;
+		}
+		if(m[row][col] != ' '){
+			return;
+		}
+		m[row][col] = '.';
+		steps.add(dir);
+		FindPathToExit(row-1,col, 'U');
+		FindPathToExit(row,col+1, 'R');
+		FindPathToExit(row+1,col, 'D');
+		FindPathToExit(row,col-1, 'L');
+		steps.remove(steps.size()-1);
+		m[row][col] = ' ';
+	}
+}

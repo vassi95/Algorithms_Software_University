@@ -1,0 +1,50 @@
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+public class Program {
+
+	static char[][] m = new char[][]{
+		  { 's', ' ', ' ', ' ' },
+		  { ' ', '*', '*', ' ' },
+		  { ' ', '*', '*', ' ' },
+		  { ' ', '*', 'e', ' ' },
+		  { ' ', ' ', ' ', ' ' }
+		};
+		
+
+		
+		public static void main(String[] args) {
+			for(int row = 0 ; row < m.length; row++){
+				for(int col=0; col<m[0].length; col ++){
+					if(m[row][col] ==' '){
+						FindConnectedAreas(row, col);
+					}
+				}
+			}
+
+		}
+
+		static boolean InRange(int row, int col){
+			boolean rowInRange = row >= 0 && row < m.length;
+			boolean colInRange = col >= 0 && col < m[0].length;
+			return rowInRange && colInRange;
+		}
+
+		public static void FindConnectedAreas(int row, int col){
+			if(! InRange(row,col) || m[row][col]== '*' || m[row][col]== '.'){
+				
+				return;
+			}
+			
+			
+			m[row][col] = '.';
+			
+			/*FindPathToExit(row-1,col, 'U');
+			FindPathToExit(row,col+1, 'R');
+			FindPathToExit(row+1,col, 'D');
+			FindPathToExit(row,col-1, 'L');
+			*/
+
+			}
+		
+
+}

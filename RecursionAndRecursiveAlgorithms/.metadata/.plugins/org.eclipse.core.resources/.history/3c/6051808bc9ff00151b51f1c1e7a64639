@@ -1,0 +1,20 @@
+
+public class Area {
+	private int row;
+	private int col;
+	private int size;
+	static int numberOfAreas=0;
+	public Area(int row, int col, int size) {
+		this.row = row;
+		this.col = col;
+		this.size = size;
+		numberOfAreas++;
+	}
+
+	@Override
+	public String toString() {
+		return " [row=" + row + ", col=" + col + ", size=" + size + "]";
+	}
+
+	
+}
