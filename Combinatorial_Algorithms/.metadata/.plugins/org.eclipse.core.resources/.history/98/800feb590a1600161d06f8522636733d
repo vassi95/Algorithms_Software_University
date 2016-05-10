@@ -1,0 +1,69 @@
+import java.util.Collection;
+
+public class Permutations {
+
+	
+	private static int countOfPermutations =0;
+	
+	private static void permute(int[] arr, int k){
+		
+		if (k>=arr.length-1){
+			join(arr, ", ");
+			setCountOfPermutations(getCountOfPermutations() + 1);
+			System.out.println();
+		}
+		else{
+			permute(arr, k+1);
+			for(int i=k;i<arr.length;i++){
+				swap(arr[k], arr[i]);
+				permute(arr, k+1);
+				swap(arr[k], arr[i]);
+			}
+		}
+		
+	
+	}
+	
+	
+	public void join(Collection<Integer> col, String delim) {
+	    StringBuilder sb = new StringBuilder();
+	    for ( int s : col ) {
+	        if ( sb.length() != 0 ) sb.append(delim);
+	        sb.append(s);
+	    }
+	    System.out.println(sb.toString());
+	}
+	
+	private static void swap(int a, int b){
+		if(a==b){
+			return;
+		}
+		a^=b;
+		b^=a;
+		a^=b;
+	}
+	
+	/*private static void print(int[] arr){
+		for(int i=0;i<arr.length;i++){
+			System.out.print(arr[i]);
+		}
+	}*/
+
+	public static void main(String args[]){
+
+		int[] arr= new int[]{1,2,3};
+		
+		
+		permute(arr,0);
+		System.out.println("Total permutations: " + getCountOfPermutations());
+	
+	}
+
+	public static int getCountOfPermutations() {
+		return countOfPermutations;
+	}
+
+	public static void setCountOfPermutations(int countOfPermutations) {
+		Permutations.countOfPermutations = countOfPermutations;
+	}
+}

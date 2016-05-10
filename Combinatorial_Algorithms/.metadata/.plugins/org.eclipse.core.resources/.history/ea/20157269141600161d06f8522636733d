@@ -1,0 +1,64 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Generate_Permutations {
+	
+	 public static void main(String args[])
+	    {
+		 Scanner in = new Scanner(System.in);
+			System.out.println("n= ");
+			int n = in.nextInt();
+	 
+	        int key = n-1;
+	        int[] currentPermutation = new int[n];
+	        for (int i = 0; i < n; i++)
+	        {
+	            currentPermutation[i] = i+1;
+	        }
+	        myPrint(currentPermutation);
+	        while (true)
+	        {
+	            key = FindKey(currentPermutation);
+	            if (key >= 0)
+	            {
+	                SwapKey(currentPermutation, key);
+	             //   Arrays.sort(currentPermutation, key + 1, n - key - 1);
+	                myPrint(currentPermutation);
+	            }
+	            else break;
+	        }
+	    }
+	    //----------
+	    private static void myPrint(int[] currentPerm)
+	    {
+	        for (int i = 0; i < currentPerm.length; i++)
+	        {
+	            System.out.print((currentPerm[i] + " "));
+	        }
+	        System.out.println();
+	    }
+	    //----------
+	    private static void SwapKey(int[]arr, int key)
+	    {
+	        int tempNum;
+	        for (int i = arr.length-1; i>=key ; i--)
+	        {
+	            if (arr[i] > arr[key])//find first value from right to left, greater than key
+	            {
+	                tempNum = arr[key];
+	                arr[key] = arr[i];
+	                arr[i] = tempNum;
+	                return;
+	            }
+	        }
+	    }
+	    //----------
+	    private static int FindKey(int[] currentPerm)
+	    {
+	        for (int i = currentPerm.length-2; i >=0 ; i--)
+	        {
+	            if (currentPerm[i]<currentPerm[i+1]) return i;
+	        }
+	        return -1;
+	    }
+}

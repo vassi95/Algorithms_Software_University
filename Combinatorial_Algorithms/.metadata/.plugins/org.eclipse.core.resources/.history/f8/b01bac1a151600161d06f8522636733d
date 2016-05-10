@@ -1,0 +1,103 @@
+
+import java.util.Scanner;
+
+public class Generate_Permutations {
+	private static int countOfPermutations = 0;
+	
+	public static int getCountOfPermutations() {
+		return countOfPermutations;
+	}
+
+	public static void setCountOfPermutations(int countOfPermutations) {
+		Generate_Permutations.countOfPermutations = countOfPermutations;
+	}
+	
+	
+	private static void PrintPermutations(int[] s, int n, int k) {
+
+		int temp;
+		int[] p = new int[k];
+		for (int i = 0; i < k; i++) {
+			p[i] = s[i];
+		}
+		print(p);
+		boolean done = false;
+		while (!done) {
+			int i = 0;
+			while (i < k - 1 && p[i] > p[i + 1]) {
+				i++;
+			}
+			if (i == 0) {
+				temp = p[0];
+				p[0] = p[1];
+				p[1] = temp;
+				print(p);
+				setCountOfPermutations(getCountOfPermutations() + 1);
+			} else {
+				for (int j = 0; j < (i + 1) / 2; j++) {
+					temp = p[j];
+					p[j] = p[i - j];
+					p[i - j] = temp;
+				}
+				if (i >= k - 1) {
+					done = NextSubset(s, p, n, k);
+					if (!done)
+						print(p);
+					setCountOfPermutations(getCountOfPermutations() + 1);
+				} else {
+
+					int m = i;
+					while (m >= 0 && p[m] > p[i + 1]) {
+						m--;
+					}
+					temp = p[m];
+					p[m] = p[i + 1];
+					p[i + 1] = temp;
+					print(p);
+					setCountOfPermutations(getCountOfPermutations() + 1);
+				}
+			}
+		}
+	}
+
+	private static boolean NextSubset(int[] s, int[] p, int n, int k) {
+
+		int i = 0;
+		while (s[i] < p[0]) {
+			i++;
+		}
+		if (i >= n - k) {
+			return true;
+		}
+		int j = 1;
+		while (j < k && s[i + j] == p[j]) {
+			j++;
+		}
+		p[j - 1] = s[i + j];
+		if (i > 0) {
+			for (int m = 0; m < j - 1; m++) {
+				p[m] = s[m];
+			}
+		}
+		return false;
+	}
+
+	private static void print(int[] currentPerm) {
+		for (int i = 0; i < currentPerm.length; i++) {
+			System.out.print((currentPerm[i] + " "));
+		}
+		System.out.println();
+	}
+
+	public static void main(String args[]) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("n= ");
+		int n = in.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = i + 1;
+		}
+		PrintPermutations(arr, 0, arr.length);
+		System.out.println("Total permutations: " + getCountOfPermutations());
+	}
+}

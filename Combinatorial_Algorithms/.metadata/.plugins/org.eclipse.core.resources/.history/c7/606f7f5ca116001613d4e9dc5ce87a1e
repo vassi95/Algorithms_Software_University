@@ -1,0 +1,111 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+public class Permutations {
+/*
+	public static void main(String args[])
+	{
+		int[] arr = new int[] { 3, 5, 1, 5, 5 };
+		Arrays.sort(arr);
+		PermuteRep(arr, 0, arr.length-1);
+	}
+
+	static void PermuteRep(int[] arr, int start, int end)
+	{
+		Print(arr);
+
+		for (int left = end - 1; left >= start; left--)
+		{
+			for (int right = left + 1; right <= end; right++)
+			{
+				if (arr[left] != arr[right])
+				{
+					Swap(arr[left],  arr[right]);
+					PermuteRep(arr, left + 1, end);
+				}
+			}
+
+			int firstElement = arr[left];
+			for (int i = left; i <= end - 1; i++)
+			{
+				arr[i] = arr[i + 1];
+			}
+			arr[end] = firstElement;
+		}
+	}
+
+	static void Print(int[] arr)
+	{
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print((arr[i] + " "));
+		}
+		System.out.println();
+	}
+
+	static void Swap(int first, int second)
+	{
+		int oldFirst = first;
+		first = second;
+		second = oldFirst;
+	}*/
+	
+	
+	private static final int MAX_NUMBER = 3;
+
+    Set<String> results = new HashSet<>(0);
+
+    /**
+     * 
+     */
+    public Permutations() {
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param availableNumbers
+     * @return
+     */
+    public static List<String> generatePermutations(Set<Integer> availableNumbers) {
+        List<String> permutations = new LinkedList<>();
+
+        for (Integer number : availableNumbers) {
+            Set<Integer> numbers = new HashSet<>(availableNumbers);
+            numbers.remove(number);
+
+            if (!numbers.isEmpty()) {
+                List<String> childPermutations = generatePermutations(numbers);
+                for (String childPermutation : childPermutations) {
+                    String permutation = number + childPermutation;
+                    permutations.add(permutation);
+                }
+            } else {
+                permutations.add(number.toString());
+            }
+        }
+
+        return permutations;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        Set<Integer> availableNumbers = new HashSet<>(0);
+
+        
+            availableNumbers.add(1);
+            availableNumbers.add(3);
+            availableNumbers.add(5);
+            availableNumbers.add(5);
+     
+
+        List<String> permutations = generatePermutations(availableNumbers);
+        for (String permutation : permutations) {
+            System.out.println(permutation);
+        }
+
+    }
+}

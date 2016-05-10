@@ -1,0 +1,6 @@
+INDEX VERSION 1.127+C:\Users\Vasi\Desktop\JAVA\NEW\SoftUni_Algorithms\Combinatorial_Algorithms\.metadata\.plugins\org.eclipse.jdt.core
+1073108927.index
+1320593025.index
+2470478814.index
+3339160630.index
+3667277871.index
